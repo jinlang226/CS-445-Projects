@@ -1,0 +1,58 @@
+how to test two trees for equality
+
+public boolean equals( BSTreeL6<T> other )
+{	
+	call the helper methods
+}
+// TRUE ONLY IF BOTH TREES IDENTICAL IN EVERY WAY INCLUDING SHAPE
+private boolean equals( BSTNode<T> thisRoot, BSTNode<T> otherRoot )
+{	
+	first make all comparisons of the roots to each other
+	if both null they are equal
+	if one is and the other isnt then they are not equal
+	etc...
+	
+	finally the 2 trees are equal if the 2 roots have the 
+	same data AND the left subtrees are equal and right 
+	subtrees are equal	
+}
+
+######################################################################
+copying a badly unbalanced tree's node into a new tree and having that
+new tree be as perfeclty balanced as possible
+
+public BSTreeL6<T> makeBalancedCopyOf( )
+{
+	// define an ArrayList<T>
+	ArrayList<T> keys = new ArrayList<T>();
+	// traverse this tree IN-ORDER adding A B C D E F G in that order to ArrayList
+	// you'll need a recursive in order helper. The visitation operation will be
+	// to add the key of each root to the ArrayList
+
+	// NOW YOU HAVE A SORTED ARRAY OR ARRAYLIST OF THE KEYS FROM THE BAD TREES
+	
+	// BELOW IS THE TREE YOU WILL RETURN AS THE RESULT. LIKE THE UNION RESULT
+	
+	BSTreeL6<T> balancedBST = new BSTreeL6<T>();
+                                                   0   keys.size()-1
+	addKeysInBalancedOrder (keys, balancedBST, lo, hi ); // fills up the BST
+
+	return balancedBST
+}
+
+void addKeysInBalancedOrder (keys, balancedBST, lo, hi )
+{
+	the code in here will look a lot like a recursive bsearch
+
+	if lo and hi have crossed return
+
+	calculate the midpoint index i.e. MID
+
+	.add(keys[MID])  (or .get(MID) ) to the BST
+
+	recurse left passing hi as mid-1
+
+	recurse right by passing lo accordingly
+
+}
+

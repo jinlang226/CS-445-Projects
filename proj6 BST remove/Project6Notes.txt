@@ -1,0 +1,47 @@
+FIRST SUGGESTION DONT DO IT RECURSIVELY
+WRITE THE CASES ONE AT A TIME.
+COOK UP A TESTER PROGRAM THAT JUST DOES THIS:
+   CREATES A TREE t1 FROM AN INPUT OF A B C D E F G
+   THEN DECLARE AN ARRAY OF STRING { "G", "F", "E", "D", "C", "B" }
+   WRITE A LOOP THAT CALLS 
+	t1.remove( "G" ) // then "F" .. up to "B" and stops
+
+DONT CALL .remove from the tester yet on anything but G F E D C B and then stop
+
+IN THE CLASS FILE WRITE REMOVE LIKE THIS 
+
+void remove( T key )
+{
+	Node parent = parentOf( key ); // YOU WRTIE parentOf() ITERATIVELY.Guess what it returns?
+	using the parent determine if the key is found in the L or R child.
+	Node deadNode = parent.L (or .R) which ever it was
+
+	Now that you have a pointer to the deadNode see if has 0,1,or 2 kids.
+
+	if (its a leaf)
+	{	make the parent.L (.R) null
+		return you are done
+	}
+
+	// DO NOT START WRITING THE 1 CHILD OR 2 CHILD UNTIL LEAF IS TESTED/CORRECT
+
+	if (its a 1 kidder) // NOW YOU NEED AN INFILE WITH NODE THAT HAVE 1 KID
+	{
+		you already have a pointer to the parent and the deadNode. 
+		Make parent of deadNode point to deadNode's only child 
+		return you are done
+	}
+
+	if (deadNode has 2 kids)
+	{
+		starting at deaNode. find the replacement node
+		the replacement node will be found by
+		go right once then go left as far as you can.
+		store the node key that you stop on - in a variable.
+		call remove (your only recusivecall) on that key you just saved
+		now overwrite the saved key overtop of deadNode's key
+		return you are done
+	}
+}
+
+you can do the case od deleting the one and only root as a separate case
